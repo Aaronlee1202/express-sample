@@ -1,0 +1,113 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "My API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/todos/": {
+      "get": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "取得所有 Todo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "這是預設資料"
+                },
+                "complete": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "id": {
+                  "type": "string",
+                  "example": "cd3ef0b1-33ae-4fdd-b45d-24a133a955ad"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "新增 Todo",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Todo內容",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "這是標題"
+                },
+                "completed": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "這是預設資料"
+                },
+                "complete": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "id": {
+                  "type": "string",
+                  "example": "cd3ef0b1-33ae-4fdd-b45d-24a133a955ad"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  }
+}

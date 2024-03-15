@@ -9,6 +9,8 @@ var usersRouter = require("./routes/users");
 var todoRouter = require("./routes/todoRouter");
 
 var app = express();
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger-output.json");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -23,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/todos", todoRouter);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
